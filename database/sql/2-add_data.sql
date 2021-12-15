@@ -1,0 +1,2 @@
+INSERT INTO metric_type (id_metric_type,name) VALUES (1,'RSS Memory') ON CONFLICT (id_metric_type) DO UPDATE SET Name= Excluded.Name;
+INSERT INTO metric_type (id_metric_type,name) VALUES (2,'Elapsed time') ON CONFLICT (id_metric_type) DO UPDATE SET Name= Excluded.Name;

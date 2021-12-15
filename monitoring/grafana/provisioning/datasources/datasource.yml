@@ -1,0 +1,18 @@
+# config file version
+apiVersion: 1
+
+# list of datasources that should be deleted from the database
+deleteDatasources:
+  - name: db_postgres
+    orgId: 1
+    
+datasources:
+  - name: db_postgres
+    type: postgres
+    url: db:5432
+    database: postgres
+    user: postgres
+    secureJsonData:
+      password: postgres
+    jsonData:
+      sslmode: "disable"

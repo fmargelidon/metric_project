@@ -1,0 +1,15 @@
+version: '3'
+
+networks:
+  my_network:
+    name: my_network
+    driver: bridge
+
+services:
+  aggregator:
+    build: .
+    networks:
+      - my_network
+    external_links:
+      - db_postgres:db
+    container_name: aggregator-daemon

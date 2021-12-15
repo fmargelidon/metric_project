@@ -1,0 +1,21 @@
+version: '3'
+
+networks:
+  my_network:
+    name: my_network
+    driver: bridge
+
+services:
+  grafana:
+    image: grafana/grafana
+    depends_on:
+      - db_postgres
+    external_links:
+      - db_postgres:db
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    networks:
+      - my_network
+    restart: always

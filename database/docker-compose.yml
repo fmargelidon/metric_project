@@ -1,0 +1,28 @@
+version: '3'
+
+networks:
+  my_network:
+    name: my_network
+    driver: bridge
+
+services:
+    postgres:
+        image: postgres:14
+        container_name: db_postgres
+        restart: always
+        networks:
+          - my_network
+        ports:
+          - 5432:5432
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        volumes: 
+          - ./postgres-data:/var/lib/postgresql/data
+          # copy the sql script to create tables
+          - ./sql/1-create_tables.sql:/docker-entrypoint-initdb.d/1-create_tables.sql
+          - ./sql/2-add_data.sql:/docker-entrypoint-initdb.d/2-add_data.sql
