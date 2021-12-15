@@ -33,7 +33,7 @@ jobs:
       # Runs a Unit Test for aggregator java project
       - name: Run a one-line script
         run: |
-          cd aggregatore;
+          cd aggregator;
           mvn verify
 
 
